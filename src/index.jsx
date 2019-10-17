@@ -1,10 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import store from 'state/store';
+import Router from './Router';
 
-const title = 'React with Webpack and Babel';
-
-// eslint-disable-next-line no-undef
-ReactDOM.render(<App title={title} />, document.getElementById('app'));
+render(
+  <>
+    <Provider store={store}>
+      <Router />
+    </Provider>
+  </>,
+  // eslint-disable-next-line no-undef
+  document.getElementById('root')
+);
 
 module.hot.accept();

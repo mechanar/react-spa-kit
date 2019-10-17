@@ -1,7 +1,8 @@
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: ['babel-polyfill', './src/index.jsx'],
   module: {
     rules: [
       {
@@ -18,7 +19,12 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
+    alias: {
+      components: path.resolve(__dirname, 'src/components/'),
+      utils: path.resolve(__dirname, 'src/utils/'),
+      state: path.resolve(__dirname, 'src/state/')
+    }
   },
   output: {
     path: `${__dirname}/dist`,
@@ -28,6 +34,16 @@ module.exports = {
   plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
     contentBase: './dist',
-    port: 3000
+    port: 3000,
+    compress: true,
+    publicPath: '/',
+    historyApiFallback: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        secure: false,
+        changeOrigin: true
+      }
+    }
   }
 };
