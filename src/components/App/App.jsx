@@ -3,13 +3,9 @@ import PropTypes from 'prop-types';
 import S from './App.styles';
 
 export default function App(props) {
-  const { warning, big, getAppData, info } = props;
-  const { useEffect } = React;
-  useEffect(() => {
-    getAppData();
-  }, [getAppData]);
+  const { warning, primary, danger, big, small, info } = props;
   return (
-    <S.Application warning={warning} big={big}>
+    <S.Application warning={warning} primary={primary} danger={danger} big={big} small={small}>
       {info}
     </S.Application>
   );
@@ -17,12 +13,17 @@ export default function App(props) {
 
 App.defaultProps = {
   warning: false,
-  big: false
+  primary: false,
+  danger: false,
+  big: false,
+  small: false
 };
 
 App.propTypes = {
   warning: PropTypes.bool,
   big: PropTypes.bool,
-  getAppData: PropTypes.func.isRequired,
+  primary: PropTypes.bool,
+  danger: PropTypes.bool,
+  small: PropTypes.bool,
   info: PropTypes.string.isRequired
 };

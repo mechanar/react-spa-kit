@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 
-import { appReducer } from './App';
+import { appReducer } from './MainPage';
 
 export default history =>
   combineReducers({
