@@ -1,0 +1,4 @@
+src/serviceWorker.js
+build/*.js
+dist/*
+yarn.lock
