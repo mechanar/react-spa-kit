@@ -1,5 +1,5 @@
-const webpack = require('webpack');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: ['babel-polyfill', './src/index.jsx'],
@@ -32,19 +32,5 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
-  devServer: {
-    contentBase: './dist',
-    port: 3000,
-    compress: true,
-    publicPath: '/',
-    historyApiFallback: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3001',
-        secure: false,
-        changeOrigin: true
-      }
-    }
-  }
+  plugins: [new webpack.HotModuleReplacementPlugin()]
 };
